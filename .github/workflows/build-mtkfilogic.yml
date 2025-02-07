@@ -128,6 +128,7 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         tar -czvf packages.tar.gz packages
+        tar -czvf base.tar.gz ../../../packages/*/*
         rm -rf *.buildinfo 
         rm -rf *.json 
         rm -rf *.manifest 
