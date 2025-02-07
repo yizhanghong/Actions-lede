@@ -173,6 +173,8 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       run: |
         cd openwrt/bin/targets/*/*
+        tar -czvf packages.tar.gz packages
+        tar -czvf base.tar.gz ../../../packages/*/*
         rm -rf *.bin
         rm -rf *.buildinfo 
         rm -rf *.json 
