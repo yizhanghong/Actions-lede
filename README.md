@@ -1,5 +1,7 @@
 # 仅供学习、查阅资料使用。
 **运行编译时间：allwinner 周二、rockchip 周三、mediatek 周四、x86 周五**<br>
+x86平台支持VirtualBox及VmWare
+默认输出所有已编译好的ipk，并打包为base.tar.gz及packages.tar.gz
 
 x86平台：不用说了吧~<br>
 allwinner平台：请看 releases<br>
