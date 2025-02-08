@@ -194,7 +194,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
-        echo -e "❌ lede主线源码版本，当前是 X86 平台\n" >> release.txt
+        echo -e "❌ lede主线源码版本，当前是 X86_64 平台\n" >> release.txt
         echo "release_tag=$(date +"%Y.%m.%d_X86")" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
 
