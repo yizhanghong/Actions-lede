@@ -22,6 +22,9 @@ rm -rf ./feeds/luci/applications/luci-app-passwall2
 #克隆插件
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/pwpage
 
+#升级golang
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
 mkdir package/small
 pushd package/small
