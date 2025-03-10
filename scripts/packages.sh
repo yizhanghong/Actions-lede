@@ -78,6 +78,8 @@ CONFIG_PACKAGE_minicom=y
 # 脚本拨号工具依赖
 CONFIG_PACKAGE_procps-ng=y
 CONFIG_PACKAGE_procps-ng-ps=y
+# usb隐藏
+CONFIG_PACKAGE_kmod-usb-hid=y
 " >> .config
 
 mkdir package/small
