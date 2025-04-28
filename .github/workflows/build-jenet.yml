@@ -88,7 +88,8 @@ jobs:
       run: |
         [ -d files ] && mv files openwrt/files || echo "files not found"
         [ -f $PLATFORM_FILE ] && cat $PLATFORM_FILE >> openwrt/.config
-        [ -f $CONFIG_FILE ] && cat $CONFIG_FILE >> openwrt/.config
+        [ -f $CONFIG_FILE ] && cat $CONFIG_FILE >> openwrt/.config        
+        cd openwrt
         make defconfig
         make download -j8 V=10
         find dl -size -1024c -exec ls -l {} \;
