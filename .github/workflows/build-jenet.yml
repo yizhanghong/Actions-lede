@@ -89,9 +89,6 @@ jobs:
         [ -d files ] && mv files openwrt/files || echo "files not found"
         [ -f $PLATFORM_FILE ] && cat $PLATFORM_FILE >> openwrt/.config
         [ -f $CONFIG_FILE ] && cat $CONFIG_FILE >> openwrt/.config
-        cd openwrt
-        rm target/linux/rockchip/patches-6.1/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-        rm target/linux/rockchip/patches-6.6/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
         make defconfig
         make download -j8 V=10
         find dl -size -1024c -exec ls -l {} \;
