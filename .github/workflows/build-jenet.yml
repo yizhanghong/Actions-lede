@@ -191,8 +191,8 @@ jobs:
         rm -rf *.json 
         rm -rf *.manifest 
         rm -rf packages
-        mv openwrt-rockchip-armv8-hinlink_opc-h69k-ext4-sysupgrade.img.gz $(date +"%Y.%m.%d")-openwrt-jetron_jenet-lu-ext4-sysupgrade.img.gz
-        mv openwrt-rockchip-armv8-hinlink_opc-h69k-squashfs-sysupgrade.img.gz $(date +"%Y.%m.%d")-openwrt-jetron_jenet-lu-squashfs-sysupgrade.img.gz
+        #mv openwrt-rockchip-armv8-hinlink_opc-h69k-ext4-sysupgrade.img.gz $(date +"%Y.%m.%d")-openwrt-jetron_jenet-lu-ext4-sysupgrade.img.gz
+        #mv openwrt-rockchip-armv8-hinlink_opc-h69k-squashfs-sysupgrade.img.gz $(date +"%Y.%m.%d")-openwrt-jetron_jenet-lu-squashfs-sysupgrade.img.gz
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
@@ -207,7 +207,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
-        echo -e "✅ lede主线源码版本，当前是 rockchip平台\nℹ 长时间无法启动请尝试重启或重刷\n🍃 如出现不稳定可尝试cpu降频" >> release.txt
+        echo -e "✅ lede主线源码版本，当前是 rockchip平台\nℹ 长时间无法启动请尝试重启或重刷\n🍃 如出现不稳定可尝试cpu降频\n h69k修改适配jenet-lu特别版" >> release.txt
         echo "release_tag=$(date +"%Y.%m.%d_Rockchip-Jenet")" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
 
