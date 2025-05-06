@@ -187,7 +187,7 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf *.bin
-        rm -rf *.buildinfo 
+        #rm -rf *.buildinfo 
         rm -rf *.json 
         rm -rf *.manifest 
         rm -rf packages
