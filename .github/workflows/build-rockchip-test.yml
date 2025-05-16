@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: build-jenet
+name: build-rockchip-test
 
 permissions: write-all
 #开启写权限，防止无法上传到release
@@ -16,21 +16,21 @@ permissions: write-all
 on:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-   - cron: 0 20 * * 2
+  #schedule:
+   #- cron: 0 20 * * 2
    #   分,时,日,月,星期。每周三 20时执行一次 (UTC时间)
   
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  PLATFORM_FILE: configs/rockchip-J.txt
+  PLATFORM_FILE: configs/rockchip-test.txt
   CONFIG_FILE: configs/packages.txt
   FREE_DISK_SH: scripts/free_disk_space.sh
   ENV_SH: scripts/environment.sh
   SETTINGS_SH: scripts/init-settings.sh
   PACKAGES_SH: scripts/packages.sh
   CLASH_CORE_SH: scripts/preset-clash-core-arm64.sh
-  DIY_SH: scripts/jenet-lu.sh
+  DIY_SH: scripts/rockchip-test.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
@@ -191,8 +191,6 @@ jobs:
         rm -rf *.json 
         rm -rf *.manifest 
         rm -rf packages
-        #mv openwrt-rockchip-armv8-hinlink_opc-h69k-ext4-sysupgrade.img.gz $(date +"%Y.%m.%d")-openwrt-jetron_jenet-lu-ext4-sysupgrade.img.gz
-        #mv openwrt-rockchip-armv8-hinlink_opc-h69k-squashfs-sysupgrade.img.gz $(date +"%Y.%m.%d")-openwrt-jetron_jenet-lu-squashfs-sysupgrade.img.gz
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
@@ -207,7 +205,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
-        echo -e "✅ lede主线源码版本，当前是 rockchip平台\nℹ 长时间无法启动请尝试重启或重刷\n🍃 如出现不稳定可尝试cpu降频\n h69k修改适配jenet-lu特别版" >> release.txt
+        echo -e "✅ lede主线源码版本，当前是 rockchip平台\nℹ 长时间无法启动请尝试重启或重刷\n🍃 如出现不稳定可尝试cpu降频\n rockchip test" >> release.txt
         echo "release_tag=$(date +"%Y.%m.%d_Rockchip-Jenet")" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
 
