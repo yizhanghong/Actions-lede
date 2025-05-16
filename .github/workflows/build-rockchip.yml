@@ -91,13 +91,6 @@ jobs:
         cd openwrt
         rm target/linux/rockchip/patches-6.1/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
         rm target/linux/rockchip/patches-6.6/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-        
-        echo "
-        CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_xunlong_orangepi-5=y
-        " >> .config
-        rm -rf target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-        cp -f $GITHUB_WORKSPACE/configs/imb3588.dts target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-        
         make defconfig
         make download -j8 V=10
         find dl -size -1024c -exec ls -l {} \;
