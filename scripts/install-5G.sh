@@ -6,7 +6,7 @@ echo "======================================="
 
 # 1. 克隆 5G Modem 支持库
 echo >> feeds.conf.default
-echo 'src-git modem https://github.com/FUjr/modem_feeds.git;main' >> feeds.conf.default
+echo 'src-git modem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
 ./scripts/feeds update modem
 ./scripts/feeds install -a -p modem
 
